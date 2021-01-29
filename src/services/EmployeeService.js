@@ -13,8 +13,12 @@ export default class EmployeeService {
         return service.get();
     }
 
-    updateEmployeeData(requestData) {
-        return service.put('/update/', requestData)
+    getEmployeeById(id) {
+        return service.Get('/get/' + id);
+    }
+
+    updateEmployeeData(empId,requestData) {
+        return service.put('/update/'+empId, requestData)
     }
 
     deleteEmployeeData(requestData) {

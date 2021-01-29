@@ -19,6 +19,13 @@ export default class AxiosService {
         } )
     }
 
+    Get(url) {
+        return axios.get(baseUrl + url, {
+            headers: {
+                contentType: 'application/json'
+            }
+        })
+    }
     put(url, data) {
         console.log(baseUrl+url + ""+ data)
         return axios.put(baseUrl+url, data, {

@@ -8,20 +8,17 @@ import EmployeeService from "../../services/EmployeeService";
 const service = new EmployeeService();
 const Display = (props) => {
 
-  const updateEmployeeData =(employee) => {
-    //localStorage.setItem('isUpdate', empId);
-    console.log(employee);
-    window.open(`http://localhost:3000/PayrollForm`);
-    service.updateEmployeeData(employee)
+  const updateEmployeeData = (data) => {
+    localStorage.setItem('id', data);
+    console.log(data);
+
   }
 
   const deleteEmployeeData = (empId) => {
     console.log("Delate Operation");
     service.deleteEmployeeData(empId).then(() => {
+      window.location.reload();
       console.log("deleted successfully");
-      this.setState({update: "updates"});
-      <Link to="PayrollForm"></Link>
-      // this.props.callUpdate();
     }).catch(err => {
       console.log(err);
     })
@@ -50,9 +47,12 @@ const Display = (props) => {
               ))}</td>
               <td>{element.salary}</td>
               <td>{element.startDate}</td>
-              <td><img onClick={() => deleteEmployeeData(element.employeeId)} src={deleteIcon} alt="delete" />
-                <img onClick={() => updateEmployeeData(element)} src={editIcon} alt="edit" />
-              </td>
+              { <td><img onClick={() => deleteEmployeeData(element.employeeId)} src={deleteIcon} alt="delete" />
+                    <Link to="Update">
+                      <img onClick={() => updateEmployeeData(element.employeeId)} src={editIcon} alt="edit" />
+                    </Link>
+              
+                </td> }
             </tr>
           ))
         }

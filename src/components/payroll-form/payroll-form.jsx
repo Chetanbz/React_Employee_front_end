@@ -14,6 +14,9 @@ import logo from '../../assets/logo.png'
 
 const employeeService = new EmployeeService();
 const PayrollForm = (props) => {
+
+
+  
   let intialValue = {
       name: '',
       profileArray: [
@@ -35,6 +38,7 @@ const PayrollForm = (props) => {
       note: '',
       id: '',
       profileUrl: '',
+      
       isUpdate: false,
       error: {
           department: '',
